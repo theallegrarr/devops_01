@@ -1,0 +1,13 @@
+- name: Provision web servers
+  hosts: webservers
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+      become: yes
+
+    - name: Start Docker
+      shell: |
+        systemctl start docker
+        systemctl enable docker
+      become: yes
